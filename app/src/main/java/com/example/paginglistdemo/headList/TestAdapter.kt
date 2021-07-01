@@ -16,7 +16,7 @@ import com.example.paginglistdemo.entity.TestData
  */
 class TestAdapter(arrayData: ArrayList<TestData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var listData: List<TestData> = arrayData
+    private var listData: ArrayList<TestData> = arrayData
     private var itemClickListener:IItemClickListener? = null
 
     fun setItemClickListener(itemClickListener: IItemClickListener){
@@ -68,18 +68,21 @@ class TestAdapter(arrayData: ArrayList<TestData>) : RecyclerView.Adapter<Recycle
             TYPE_1 -> {
                 if (holder is TestViewHolder1) {
                     holder.textView?.text = listData[position].textMessage
+                    holder.btnTest?.text = listData[position].btnText
                     holder.setItemClickListener(position)
                 }
             }
             TYPE_2 -> {
                 if (holder is TestViewHolder2) {
                     holder.textView?.text = listData[position].textMessage
+                    holder.btnTest?.text = listData[position].btnText
                     holder.setItemClickListener(position)
                 }
             }
             else -> {
                 if (holder is TestViewHolder1) {
                     holder.textView?.text = listData[position].textMessage
+                    holder.btnTest?.text = listData[position].btnText
                     holder.setItemClickListener(position)
                 }
             }
