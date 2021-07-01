@@ -10,13 +10,17 @@ import com.example.paginglistdemo.base.IItemClickListener
 import com.example.paginglistdemo.headList.HeadListActivity
 import com.example.paginglistdemo.mainActivitylist.MainListAdapter
 import com.example.paginglistdemo.mainActivitylist.MainListData
+import com.example.paginglistdemo.pullload.PullLoadMoreActivity
 import com.example.paginglistdemo.pullrefreash.PullRefreshActivity
+import com.example.paginglistdemo.room.DataBaseActivity
 import com.example.paginglistdemo.util.Logger
 
 class MainActivity : AppCompatActivity() {
     private lateinit var listMain: RecyclerView
     private val HEAD_LIST = 0
     private val PULL_REFRESH = 1
+    private val PULL_LOAD = 2
+    private val DATA_BASE = 3
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,9 +31,9 @@ class MainActivity : AppCompatActivity() {
     private fun initData(): ArrayList<MainListData> {
         var listData = ArrayList<MainListData>()
         listData.add(MainListData("带头尾item Recyclerview", "可以添加头尾item"))
-        listData.add(MainListData("下拉刷新控件", "下拉刷新控件，未添加adapter刷新逻辑"))
-        listData.add(MainListData("test3", "测试3"))
-        listData.add(MainListData("test4", "测试4"))
+        listData.add(MainListData("下拉刷新控件", "下拉刷新控件，最简单的demo"))
+        listData.add(MainListData("上拉加载", "上拉加载简单demo"))
+        listData.add(MainListData("数据库操作", "数据库添加和清空列表操作"))
         return listData
     }
 
@@ -46,6 +50,16 @@ class MainActivity : AppCompatActivity() {
                     PULL_REFRESH ->{
                         val intent = Intent()
                         intent.setClass(this@MainActivity,PullRefreshActivity::class.java)
+                        startActivity(intent)
+                    }
+                    PULL_LOAD ->{
+                        val intent = Intent()
+                        intent.setClass(this@MainActivity,PullLoadMoreActivity::class.java)
+                        startActivity(intent)
+                    }
+                    DATA_BASE ->{
+                        val intent = Intent()
+                        intent.setClass(this@MainActivity,DataBaseActivity::class.java)
                         startActivity(intent)
                     }
                     else ->{

@@ -36,6 +36,5 @@ class HeadListActivity : AppCompatActivity() {
         listView?.setAdapter(testAdapter)
         listView?.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
         listView?.layoutManager = LinearLayoutManager(this)
-        testAdapter
     }
 }

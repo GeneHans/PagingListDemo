@@ -1,6 +1,7 @@
 package com.example.paginglistdemo.room
 
 import androidx.room.*
+import io.reactivex.rxjava3.core.Flowable
 
 /**
  * room数据操作类
@@ -9,13 +10,16 @@ import androidx.room.*
 abstract class TestPageDataDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertTestPageData(data: TestListPageEntity)
+    abstract suspend fun insertTestPageData(data: TestListPageEntity)
 
     @Query("DELETE FROM " + TestListPageEntity.tableName)
-    abstract fun deleteAllData()
+    abstract suspend fun deleteAllData()
 
     @Query("SELECT * FROM " + TestListPageEntity.tableName + " ORDER BY id")
     abstract suspend fun queryAll(): List<TestListPageEntity>?
+
+    @Query("SELECT * FROM " + TestListPageEntity.tableName + " ORDER BY id")
+    abstract fun queryAllByRxjava(): Flowable<List<TestListPageEntity>?>
 
     @Query("SELECT * FROM " + TestListPageEntity.tableName + " where id = (:id)")
     abstract fun queryById(id: Long): TestListPageEntity?
