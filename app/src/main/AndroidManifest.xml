@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PagingListDemo">
-        <activity android:name=".room.DataBaseActivity"></activity>
+        <activity android:name=".paging2.Paging2Activity"></activity>
+        <activity android:name=".room.DataBaseActivity" />
         <activity android:name=".pullload.PullLoadMoreActivity" />
         <activity android:name=".pullrefreash.PullRefreshActivity" />
         <activity android:name=".MainActivity">

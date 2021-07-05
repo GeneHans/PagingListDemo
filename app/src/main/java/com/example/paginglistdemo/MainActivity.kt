@@ -10,6 +10,7 @@ import com.example.paginglistdemo.base.IItemClickListener
 import com.example.paginglistdemo.headList.HeadListActivity
 import com.example.paginglistdemo.mainActivitylist.MainListAdapter
 import com.example.paginglistdemo.mainActivitylist.MainListData
+import com.example.paginglistdemo.paging2.Paging2Activity
 import com.example.paginglistdemo.pullload.PullLoadMoreActivity
 import com.example.paginglistdemo.pullrefreash.PullRefreshActivity
 import com.example.paginglistdemo.room.DataBaseActivity
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val PULL_REFRESH = 1
     private val PULL_LOAD = 2
     private val DATA_BASE = 3
+    private val PAGING2 = 4
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(MainListData("下拉刷新控件", "下拉刷新控件，最简单的demo"))
         listData.add(MainListData("上拉加载", "上拉加载简单demo"))
         listData.add(MainListData("数据库操作", "数据库添加和清空列表操作"))
+        listData.add(MainListData("Paging2", "Paging2实现分页加载"))
         return listData
     }
 
@@ -60,6 +63,11 @@ class MainActivity : AppCompatActivity() {
                     DATA_BASE ->{
                         val intent = Intent()
                         intent.setClass(this@MainActivity,DataBaseActivity::class.java)
+                        startActivity(intent)
+                    }
+                    PAGING2 ->{
+                        val intent = Intent()
+                        intent.setClass(this@MainActivity,Paging2Activity::class.java)
                         startActivity(intent)
                     }
                     else ->{
